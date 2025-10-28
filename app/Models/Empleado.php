@@ -16,3 +16,4 @@ class Empleado extends Model
         'salario',
     ];
 }
+
