@@ -1,62 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Empleados Backend - Laravel API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyecto backend desarrollado con **Laravel 11** y **MySQL** que expone una API REST para gestionar empleados.
 
-## About Laravel
+## 🧱 Tecnologías
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP 8.2+
+- Laravel 11
+- MySQL
+- Composer
+- Git + GitHub
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ⚙️ Instalación
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Clonar el repositorio:
 
-## Learning Laravel
+git clone https://github.com/tu-usuario/empleados-backend.git
+cd empleados-backend
+Instalar dependencias:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+composer install
+Crear archivo .env a partir de .env.example:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+cp .env.example .env
+Generar clave de aplicación:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+php artisan key:generate
+Configurar base de datos en .env:
+env
 
-## Laravel Sponsors
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=empleados_db
+DB_USERNAME=root
+DB_PASSWORD=
+Ejecutar migraciones y seeders:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+php artisan migrate --seed
+Levantar servidor:
 
-### Premium Partners
+php artisan serve
+📡 Endpoints API
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Método	URL	Descripción
+GET	/api/empleados	Listar todos los empleados
+POST	/api/empleados	Crear nuevo empleado
+Ejemplo de body (POST)
+JSON
 
-## Contributing
+{
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "correo": "juan@example.com",
+  "salario": 2500.50
+}
+📂 Estructura
+app/Models/Empleado.php – Modelo
+app/Http/Controllers/EmpleadoController.php – Controlador API
+database/migrations/ – Migraciones
+database/seeders/EmpleadoSeeder.php – Seeder de prueba
+🧪 Pruebas
+Puedes probar los endpoints con:
+Navegador: http://localhost:8000/api/empleados
+Postman o Thunder Client
+📌  Notas
+El campo correo debe ser único.
+El seeder crea 10 empleados de ejemplo.
+Asegúrate de tener MySQL activo (XAMPP, Laragon, etc.).
+Hecho con ❤️ por BIMAR QUISPE LUCANA – Tecnologías de Internet – UAB
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# empleados-backend
+¿Cómo me fue en el examen?
+Me sentí cómodo con el backend; Laravel me resulta familiar, pero el frontend me tomó más tiempo del previsto.
+¿Qué complicaciones tuve?
+Angular me lanzó varios errores (NG0908, NG0201) por Zone.js y HttpClient; al final eran temas de configuración.
+En Laravel tuve que migrar de SQLite a MySQL porque el seeder fallaba por columnas faltantes.
+¿Qué aprendí?
+A habilitar HttpClient con provideHttpClient() en app.config.ts.
+A usar php artisan migrate:fresh --seed para rehacer la BD sin conflictos.
+A ordenar commits con mensajes semánticos y ramas (dev → master).
+¿Qué haría diferente?
+Revisaría la configuración inicial de Angular antes de empezar, y subiría cada cambio a Git en cuanto lo tuviera listo para no hacer commits grandes al final.
