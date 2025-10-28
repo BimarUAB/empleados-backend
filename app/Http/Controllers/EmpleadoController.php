@@ -14,7 +14,6 @@ class EmpleadoController extends Controller
     {
         return Empleado::all();
     }
-
     /**
      * Crea un nuevo empleado
      */
