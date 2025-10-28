@@ -15,3 +15,5 @@ class EmpleadoSeeder extends Seeder
       \App\Models\Empleado::factory(10)->create();  //
     }
 }
+
+
