@@ -3,7 +3,6 @@
 Proyecto backend desarrollado con **Laravel 11** y **MySQL** que expone una API REST para gestionar empleados.
 
 ## 🧱 Tecnologías
-
 - PHP 8.2+
 - Laravel 11
 - MySQL
